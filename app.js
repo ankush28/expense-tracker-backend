@@ -6,7 +6,7 @@ const bodyParser = require("body-parser"); //imnport body-parser
 require('dotenv').config();
 const userRoutes=require('./routes/user');
 const expenseRoutes=require('./routes/expense');
-
+var cors = require('cors');
 const mongoose = require("mongoose");
 mongoose.connect('mongodb+srv://ankush:ankush@cluster0.zatdn5f.mongodb.net/?retryWrites=true&w=majority')
 .then(()=>{
@@ -16,7 +16,7 @@ mongoose.connect('mongodb+srv://ankush:ankush@cluster0.zatdn5f.mongodb.net/?retr
   console.log("Not able to connect to database");
 })
 
-
+app.use(cors());
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
